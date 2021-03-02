@@ -1,0 +1,119 @@
+Name:
+Pitt id: sab301@pitt.edu
+Tool: Scikit-learn
+
+Output:
+================Task 1================
+Model 1: Linear Regression Model with Ridge regularization, alpha = 0.001 and solver='sag'
+Mean squared error	24.415385456015713
+--------------------
+Model 2: KNN model with n=9 and BallTree algorithm
+Mean squared error	25.40625
+==================Task 2================
+Model 1:
+Accuracy	0.375	Macro_F1	0.30342857142857144	Macro_Precision	0.34810414810414814	Macro_Recall	0.32125768967874235
+Category	teacher	F1	0.6601769911504425	Precision	0.8083333333333333	Recall	0.6269296740994854
+Category	health	F1	0.49606299212598426	Precision	0.4921875	Recall	0.5
+Category	service	F1	0.49606299212598426	Precision	0.4921875	Recall	0.5
+Category	at_home	F1	0.9198998748435545	Precision	0.9591836734693877	Recall	0.8947368421052632
+Category	other	F1	0.9815615096513972	Precision	0.975	Recall	0.9888888888888889
+--------------------
+Model 2:
+Accuracy	0.484375	Macro_F1	0.3933333333333333	Macro_Precision	0.43090418353576243	Macro_Recall	0.4179084073820916
+Category	teacher	F1	0.6147157190635452	Precision	0.9274193548387097	Recall	0.5909090909090909
+Category	health	F1	0.49606299212598426	Precision	0.4921875	Recall	0.5
+Category	service	F1	0.49606299212598426	Precision	0.4921875	Recall	0.5
+Category	at_home	F1	0.9410138248847926	Precision	0.96875	Recall	0.9210526315789473
+Category	other	F1	1.0	Precision	1.0	Recall	1.0
+================Task 3================
+Model 1:
+Accuracy	0.3125	Hamming loss	0.3203125
+--------------------
+Model 2:
+Accuracy	0.3125	Hamming loss	0.3203125
+
+
+Report:
+
+Task 1:
+
+- What features do you choose to use and why chose them?
+  a. Feature 1: 'Medu'
+  b. Feature 2: 'failures'
+  c. Feature 3: 'higher'
+  All above mentioned features have Correlation value to 'G3' > 0.26
+
+- How do you use these features? For example, original value, normalized value, log value, one hot vector, etc.
+  a. Feature 1: one hot vector
+  b. Feature 2: No change
+  c. Feature 3: one hot vector
+  ...
+
+- Model 1
+  a. Model name: Linear Regression
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation.
+  Ridge regularization, alpha = 0.001 and solver='sag' cv=0.30167921547439835
+  c. Final performance on testing data. MSE = 24.415385456015713
+  d. Running time of training the model. 0.002s
+
+- Model 2
+  a. Model name: KNN
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation.
+  n=9 and BallTree algorithm cv = 0.32051282051282054
+  c. Final performance on testing data. MSE = 25.40625
+  d. Running time of training the model. 0.001s
+
+
+
+Task 2:
+
+- What features do you choose to use and why chose them?
+  a. Feature 1: 'Medu'
+  b. Feature 2: 'Fedu'
+  c. Feature 3: 'Fjob_other'
+  All above mentioned features have Correlation value to 'Mjob' > 0.25
+
+- How do you use these features? For example, original value, normalized value, log value, one hot vector, etc.
+  a. Feature 1: No change
+  b. Feature 2: No change
+  c. Feature 3: one hot vector with get_dummies()
+
+- Model 1
+  a. Model name: knn
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation. 
+  n_neighbors=10
+  c. Final performance on testing data. 
+  Accuracy	0.375	Macro_F1	0.30342857142857144	Macro_Precision	0.34810414810414814	Macro_Recall	0.32125768967874235
+  d. Running time of training the model. 0.002 s
+
+- Model 2
+  a. Model name: svm
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation.
+  c. Final performance on testing data.
+  d. Running time of training the model. 0.048 s
+
+
+
+
+Task 3:
+
+- What features do you choose to use and why chose them?
+  a. Features: All features (1-15, 17-28)
+
+- How do you use these features? For example, original value, normalized value, log value, one hot vector, etc.
+  a. Feature 1: one hot vector using get_dummies() - ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian', 'nursery', 'higher', 'internet', 'romantic']
+  b. Feature 2: original value - all other feature except for target
+
+- Model 1
+  a. Model name: DecisionTreeClassifier
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation.
+  random_state=None, max_features='sqrt', min_samples_leaf=1000
+  c. Final performance on testing data. Accuracy = 0.3125
+  d. Running time of training the model. 0.209 s
+
+- Model 2
+  a. Model name: SVR
+  b. Parameters that I tried and the corresponding performance on training data with 10 fold cross-validation.
+  kernel='rbf', C=30.0
+  c. Final performance on testing data. Accuracy = 0.3125
+  d. Running time of training the model. 0.007 s
